@@ -1,0 +1,44 @@
+create table cliente
+	(
+	codcliente  integer,
+	nome		  varchar,
+	primary key (codcliente)
+		);
+
+create table produto1
+	(
+	codproduto 	integer,
+	nome	varchar(30),
+	valor	integer,
+	
+	primary key	(codproduto)
+	);	
+
+ create table pedidos
+ 	(
+ 	codpedidos	integer,
+ 	clienteId	integer,
+	produtoId 	integer,
+	primary key (codpedidos),
+	foreign key (clienteId) references cliente (codcliente) on delete set null,
+	foreign key (produtoId ) references produto1 (codproduto) on delete set null
+	);
+
+create table loja
+ 	(
+ 	codloja 	integer,
+ 	nome		varchar,
+	
+	primary key (codloja)
+	
+	
+	);
+
+create table funcionario
+ 	(
+ 	id	integer,
+ 	nome	varchar,
+ 	codeId  int,
+	primary key (id),
+	foreign key (codeId) references loja (codloja) on delete set null
+	);
